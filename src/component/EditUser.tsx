@@ -19,8 +19,8 @@ const EditUser: React.FC<EditUserProps> = ({ user }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    name: user.name,
-    email: user.email,
+    name: user?.name,
+    email: user?.email,
   });
 
   const handleEditUser = () => {

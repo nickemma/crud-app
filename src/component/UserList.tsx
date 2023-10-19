@@ -4,8 +4,10 @@ import TodoCard from './TodoCard';
 import { useSelector } from 'react-redux';
 import { UserState } from '../types/userState';
 
+import { RootState } from '../configureStore';
+
 const UserList = () => {
-  const users = useSelector((state: UserState) => state.users);
+  const state: UserState = useSelector((state: RootState) => state.users);
   const navigate = useNavigate();
 
   const handleAddUser = () => {
@@ -15,7 +17,7 @@ const UserList = () => {
   return (
     <div>
       <Button onAddClick={handleAddUser}>Add User</Button>
-      <TodoCard users={users} />
+      <TodoCard users={state.users} />
     </div>
   );
 };

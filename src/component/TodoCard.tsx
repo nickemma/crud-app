@@ -15,12 +15,12 @@ interface TodoCardProps {
 
 const TodoCard: React.FC<TodoCardProps> = ({ users }) => {
   const dispatch = useDispatch();
-  console.log('TodoCard users:', users);
+
   return (
     <div className="grid gap-5 md:grid-cols-2">
-      {users?.length > 0 ? (
+      {users?.length ? (
         users?.map((user) => {
-          console.log('Mapping user:', user);
+          console.log(user, 'jeu');
           return (
             <div
               key={user.id}
