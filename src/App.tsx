@@ -1,35 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import AddUser from './component/AddUser';
+import UserList from './component/UserList';
+import { Routes, Route } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="container mx-auto px-2 max-w-5xl pt-10 md:pt-32">
+      <h1 className="text-2xl text-center font-bold text-gray-700 mb-3">
+        Crud With Redux Toolkit
+      </h1>
+      <Routes>
+        <Route path="/" element={<UserList />} />
+        <Route path="/add-user" element={<AddUser />} />
+      </Routes>
+    </div>
+  );
+};
 
-export default App
+export default App;
