@@ -3,31 +3,35 @@ import { useNavigate } from 'react-router-dom';
 import TextField from '../feature/TextField';
 import Button from '../feature/Button';
 import { useDispatch } from 'react-redux';
-import { addUser } from '../redux/userSlice';
+import { updateUser } from '../redux/userSlice';
 
-const AddUser: React.FC = () => {
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+interface EditUserProps {
+  user: User;
+}
+
+const EditUser: React.FC<EditUserProps> = ({ user }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    name: user.name,
+    email: user.email,
   });
 
-  const handleAddUser = () => {
+  const handleEditUser = () => {
     const { name, email } = formData;
-    if (!name || !email) {
-      alert('Please enter name and email');
-      return;
-    }
-    // Dispatch the addUser action with the new user data
     dispatch(
-      addUser({
-        id: Math.floor(Math.random() * 100) + 1, // Generate random number for id
+      updateUser({
+        id: Math.floor(Math.random() * 100) + 1,
         name,
         email,
       })
     );
-    setFormData({ name: '', email: '' });
     navigate('/');
   };
 
@@ -46,9 +50,9 @@ const AddUser: React.FC = () => {
         value={formData.email}
         onAddChange={(e) => setFormData({ ...formData, email: e.target.value })}
       />
-      <Button onAddClick={handleAddUser}>Submit</Button>
+      <Button onAddClick={handleEditUser}>Submit</Button>
     </div>
   );
 };
 
-export default AddUser;
+export default EditUser;

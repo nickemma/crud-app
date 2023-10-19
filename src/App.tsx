@@ -1,4 +1,5 @@
 import AddUser from './component/AddUser';
+import EditUser from './component/EditUser';
 import UserList from './component/UserList';
 import { Routes, Route } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<UserList />} />
         <Route path="/add-user" element={<AddUser />} />
+        <Route path="/edit-user/:id" element={<EditUser />} />
       </Routes>
     </div>
   );
