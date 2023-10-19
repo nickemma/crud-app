@@ -20,7 +20,6 @@ const TodoCard: React.FC<TodoCardProps> = ({ users }) => {
     <div className="grid gap-5 md:grid-cols-2">
       {users?.length ? (
         users?.map((user) => {
-          console.log(user, 'jeu');
           return (
             <div
               key={user.id}
